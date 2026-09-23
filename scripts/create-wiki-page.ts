@@ -110,7 +110,10 @@ function parseArgs(argv: string[]): {
     console.log(`[create-page] Normalized slug: ${slug}`)
   }
 
-  const title = capitalizeTitle(positional[1] ?? titleFromSlug(slug))
+  // If the user provided an explicit title use it verbatim; otherwise
+  // generate a title from the slug and normalize capitalization.
+  const title =
+    positional[1] !== undefined ? positional[1].trim() : titleFromSlug(slug)
 
   return { slug, title, type, skipRouter }
 }

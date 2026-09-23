@@ -20,50 +20,23 @@ const sectionOrder = [
   "religious-organization",
   "location",
 ] as const
-type PageType =
-  | "character"
-  | "location"
-  | "adventuring_party"
-  | "god"
-  | "organization"
-  | "establishment"
-  | "religious-organization"
-  | "institution"
-  | "entity"
 
-const pageTypeParser = (type: string) => {
-  switch (type as PageType) {
-    case "character":
-      return "Personagens"
-
-    case "location":
-      return "Locais"
-
-    case "adventuring_party":
-      return "Grupos de Aventureiros"
-
-    case "god":
-      return "Deuses"
-
-    case "organization":
-      return "Organizações"
-
-    case "establishment":
-      return "Estabelecimentos"
-
-    case "religious-organization":
-      return "Organizações Religiosas"
-
-    case "institution":
-      return "Instituições"
-
-    case "entity":
-      return "Entidades"
-
-    default:
-      return "Páginas"
-  }
+// Runtime mapping from page type -> displayed label. Add entries here
+// when you introduce new types. This keeps the UI flexible while
+// avoiding an exhaustive TypeScript union that needs frequent updates.
+const PAGE_TYPE_LABELS: Record<string, string> = {
+  character: "Personagens",
+  location: "Locais",
+  adventuring_party: "Grupos de Aventureiros",
+  god: "Deuses",
+  organization: "Organizações",
+  establishment: "Estabelecimentos",
+  "religious-organization": "Organizações Religiosas",
+  institution: "Instituições",
+  entity: "Entidades",
 }
+
+const pageTypeParser = (type: string) => PAGE_TYPE_LABELS[type] ?? "Páginas"
 
 export function SearchBar({ pages, imageUrlsByPage }: SearchBarProps) {
   const [query, setQuery] = useState("")

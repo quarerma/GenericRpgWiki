@@ -3,7 +3,11 @@ const { fontFamily } = require("tailwindcss/defaultTheme")
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}", "lib/**/*.{ts,tsx}"],
+  content: [
+    "app/**/*.{ts,tsx}",
+    "components/**/*.{ts,tsx}",
+    "lib/**/*.{ts,tsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -13,6 +17,18 @@ module.exports = {
       },
     },
     extend: {
+      // Color tokens mapped to CSS variables.
+      //
+      // The actual HSL values live in `styles/globals.css` (under `:root` and
+      // the `.dark` class). Change the variables there to update the look of
+      // the site. Edit this file only when you want to expose a new semantic
+      // token (for example `highlight`) or change token names used across the
+      // app.
+      //
+      // Example: to add `highlight`, add a CSS variable `--highlight` in
+      // `styles/globals.css` and then add a `highlight` entry here that points
+      // to `hsl(var(--highlight))` so you can use `bg-highlight` in your
+      // components.
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,6 +63,11 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Example custom token (uncomment + add CSS var in globals.css to use):
+        // highlight: {
+        //   DEFAULT: "hsl(var(--highlight))",
+        //   foreground: "hsl(var(--highlight-foreground))",
+        // },
       },
       borderRadius: {
         lg: `var(--radius)`,
