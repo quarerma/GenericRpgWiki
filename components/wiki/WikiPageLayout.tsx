@@ -27,7 +27,7 @@ export function WikiPageLayout({
   const hasImage = hasCarousel || Boolean(imageUrl)
 
   return (
-    <article className="container py-8">
+    <article className="container py-8 ">
       <nav className="mb-6 text-sm text-muted-foreground">
         <Link href="/" className="hover:text-foreground">
           Home
