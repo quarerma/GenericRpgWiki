@@ -146,49 +146,6 @@ Notes:
 - Prefer editing `styles/globals.css` for color value changes and `tailwind.config.js` for token names or structural changes. This keeps a clear separation between values and semantic tokens.
 - If you use design tokens in other parts of the app, keep the variable names consistent to avoid confusion.
 
-## Base components & parsers (rundown)
-
-Short overview of the main UI components and the Markdown/parsing utilities in the app:
-
-- Layout & navigation
-
-  - `components/site-header.tsx` — top nav with `MainNav` and `ThemeToggle`.
-  - `components/site-footer.tsx` — footer content and links.
-  - `components/main-nav.tsx` — the navigation items used in the header.
-
-- Theme & utilities
-
-  - `components/theme-provider.tsx` — theme (light/dark) wrapper.
-  - `components/theme-toggle.tsx` — UI control to switch theme.
-  - `components/tailwind-indicator.tsx` — dev helper to show current Tailwind breakpoint.
-
-- Reusable UI primitives (`components/ui`)
-
-  - `button.tsx` — central button variants (`primary`, `secondary`, `destructive`, `ghost`, `link`).
-  - `carousel.tsx` — embla-based carousel primitives used by page image carousel.
-  - `separator.tsx` — simple divider.
-
-- Wiki UI (`components/wiki`)
-
-  - `SearchBar.tsx` — search input and grouped results by `type`.
-  - `PageList.tsx` — renders page cards and list items.
-  - `WikiContent.tsx` — renders parsed HTML using Tailwind `prose` styles.
-  - `WikiImageCarousel.tsx` — image carousel renderer for page images.
-  - `WikiLinkText.tsx` — helper to render `[[Wiki Links]]` inline.
-  - `WikiPageInfo.tsx` — shows structured page metadata (from `info.json`).
-  - `WikiPageLayout.tsx` — combines content, images, and info into the page layout.
-
-- Parsers & wiki helpers (`lib/wiki`)
-  - `parse-markdown.ts` — unified pipeline (remark/rehype) that converts page Markdown to HTML and plugs in local rehype/remark plugins.
-  - `remark-wiki-links.ts` — preprocessor that resolves `[[link|label]]` wiki-links into slugged links.
-  - `remark-wiki-images.ts` — rewrites image `src` to app asset URLs and injects classes/figures.
-  - `load-page-info.ts` — loads and normalizes `info.json` for a page.
-  - `load-carousel.ts` — reads `carousel.json` to build carousel items.
-  - `page-image.ts` — finds preferred `portrait` filenames for the main page image.
-  - `registry.ts`, `paths.ts`, `types.ts` — routing/manifest, path helpers and type definitions used across the app.
-
-If you'd like I can annotate these files with comments or add a simple diagram to the README. Want me to add inline comments in the parser files next?
-
 ## Page content structure
 
 A page folder looks like:
